@@ -1,3 +1,8 @@
 resources:
+  - namespace.yaml
+  - nextcloud-configmap.yaml
+  - nextcloud-sealed-secret.yaml
+  - repository.yaml
+  - release.yaml
   - default-headers.yaml
   - ingress.yaml
