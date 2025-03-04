@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  releaseName: nextcloud
+  chart:
+    spec:
+      chart: nextcloud
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+  interval: 1m
+  install:
+    remediation:
+      retries: 3
+  valuesFrom:
+    - name: nextcloud-configmap
+      kind: ConfigMap
+      namespace: nextcloud
+      valuesKey: values.yaml
+    - name: nextcloud-secret-values
+      kind: Secret
+      namespace: nextcloud
+      valuesKey: values.yaml
