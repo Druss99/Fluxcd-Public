@@ -1,0 +1,32 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: metallb-helm
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: "clusters/k3s-ha/metallb/metallb-resources"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: metallb-controller
+      namespace: metallb-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: metallb-resources
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: metallb-helm
+  interval: 5m
+  path: "clusters/k3s-ha/metallb/metallb-resources"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
