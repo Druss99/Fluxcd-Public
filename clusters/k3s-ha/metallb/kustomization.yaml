@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  path: "./clusters/k3s-ha/metallb/metallb-resources"
+  path: "clusters/k3s-ha/metallb/metallb-resources"
   prune: true
   sourceRef:
     kind: GitRepository
@@ -25,7 +25,7 @@ spec:
   dependsOn:
     - name: metallb-helm
   interval: 5m
-  path: "./clusters/k3s-ha/metallb/metallb-resources"
+  path: "clusters/k3s-ha/metallb/metallb-resources"
   prune: true
   sourceRef:
     kind: GitRepository
