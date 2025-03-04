@@ -19,9 +19,7 @@ spec:
   valuesFrom:
     - name: nextcloud-configmap
       kind: ConfigMap
-      namespace: nextcloud
       valuesKey: values.yaml
     - name: nextcloud-secret-values
       kind: Secret
-      namespace: nextcloud
       valuesKey: values.yaml
