@@ -1,0 +1,83 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  releaseName: traefik
+  chart:
+    spec:
+      chart: traefik
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+      version: "v34.4.1"
+  interval: 1m
+  install:
+    remediation:
+      retries: 3
+  values:
+    globalArguments:
+      - "--global.sendanonymoususage=false"
+      - "--global.checknewversion=false"
+
+    additionalArguments:
+      - "--serversTransport.insecureSkipVerify=true"
+      - "--log.level=INFO"
+      - "--entrypoints.web.http.middlewares=traefik-crowdsec-bouncer@kubernetescrd"
+      - "--entrypoints.websecure.http.middlewares=traefik-crowdsec-bouncer@kubernetescrd"
+      - "--providers.kubernetescrd"
+
+    deployment:
+      enabled: true
+      replicas: 4 # match with number of workers
+      annotations: {}
+      podAnnotations: {}
+      additionalContainers: []
+      initContainers: []
+
+    nodeSelector:
+      worker: "true" # add these labels to your worker nodes before running
+
+    experimental:
+      plugins:
+        crowdsec-bouncer:
+          moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
+          version: v1.6.4
+
+    ports:
+      web:
+        redirectTo:
+          port: websecure
+          priority: 10
+      websecure:
+        tls:
+          enabled: true
+
+    ingressRoute:
+      dashboard:
+        enabled: false
+
+    providers:
+      kubernetesCRD:
+        enabled: true
+        ingressClass: traefik-external
+        allowExternalNameServices: true
+      kubernetesIngress:
+        enabled: true
+        allowExternalNameServices: true
+        publishedService:
+          enabled: false
+
+    rbac:
+      enabled: true
+
+    service:
+      enabled: true
+      type: LoadBalancer
+      annotations: {}
+      labels: {}
+      spec:
+        loadBalancerIP: 192.168.50.65 # this should be an IP in the Kube-VIP range
+      loadBalancerSourceRanges: []
+      externalIPs: []
