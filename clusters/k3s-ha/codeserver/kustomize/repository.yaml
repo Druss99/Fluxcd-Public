@@ -10,4 +10,4 @@ spec:
     branch: main
   ignore: |
     /*
-    !/ci/helm-chart/*
+    !/ci/helm-chart/
