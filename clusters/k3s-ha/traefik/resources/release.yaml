@@ -24,8 +24,8 @@ spec:
     additionalArguments:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
-      - "--entrypoints.web.http.middlewares=traefik-crowdsec-bouncer@kubernetescrd"
-      - "--entrypoints.websecure.http.middlewares=traefik-crowdsec-bouncer@kubernetescrd"
+      - "--entrypoints.web.http.middlewares=traefik-bouncer@kubernetescrd"
+      - "--entrypoints.websecure.http.middlewares=traefik-bouncer@kubernetescrd"
       - "--providers.kubernetescrd"
 
     autoscaling:
