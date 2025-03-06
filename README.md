@@ -1,2 +1,2 @@
 # Fluxcd-Public
-Kubernetes manifest managed by fluxcd
+Kubernetes manifests managed by fluxcd
