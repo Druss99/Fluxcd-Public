@@ -29,7 +29,7 @@ data:
         - name: PARSERS
           value: "crowdsecurity/cri-logs crowdsecurity/whitelists crowdsecurity/nextcloud-whitelist crowdsecurity/jellyfin-whitelist"
         - name: COLLECTIONS
-          value: "crowdsecurity/linux crowdsecurity/traefik crowdsecurity/home-assistant gauth-fr/immich LePresidente/jellyfin crowdsecurity/nextcloud Dominic-Wagner/vaultwarden firix/authentik"
+          value: "crowdsecurity/linux crowdsecurity/traefik crowdsecurity/home-assistant gauth-fr/immich LePresidente/jellyfin crowdsecurity/nextcloud Dominic-Wagner/vaultwarden firix/authentik crowdsecurity/whitelist-good-actors"
         # When testing, allow bans on private networks
         #- name: DISABLE_PARSERS
         #  value: "crowdsecurity/whitelists"
