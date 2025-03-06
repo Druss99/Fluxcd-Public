@@ -51,7 +51,7 @@ spec:
       plugins:
         crowdsec-bouncer:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-          version: v1.6.4
+          version: v1.4.1
 
     ports:
       web:
