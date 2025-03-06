@@ -1,0 +1,7 @@
+resources:
+  - repository.yaml
+  - namespace.yaml
+  - pvc.yaml
+  - release.yaml
+  - default-headers.yaml
+  - ingress.yaml
