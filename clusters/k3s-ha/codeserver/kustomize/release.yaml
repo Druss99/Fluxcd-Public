@@ -7,7 +7,7 @@ spec:
   releaseName: codeserver
   chart:
     spec:
-      chart: code-server
+      chart: /ci/helm-chart
       sourceRef:
         kind: GitRepository
         name: codeserver
