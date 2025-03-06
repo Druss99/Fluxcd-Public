@@ -17,3 +17,7 @@ spec:
       kind: Deployment
       name: authentik-server
       namespace: authentik
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: authentik-postgres
+      namespace: authentik
