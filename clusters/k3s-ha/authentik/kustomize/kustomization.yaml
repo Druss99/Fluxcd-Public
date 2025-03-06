@@ -1,0 +1,10 @@
+resources:
+  - namespace.yaml
+  - authentik-configmap.yaml
+  - authentik-sealed-secret.yaml
+  - repository.yaml
+  - postgres-pvc.yaml
+  - redis-pvc.yaml
+  - release.yaml
+  - default-headers.yaml
+  - ingress.yaml

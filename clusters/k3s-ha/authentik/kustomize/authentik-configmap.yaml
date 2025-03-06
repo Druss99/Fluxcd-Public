@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authentik-configmap
+  namespace: authentik
+data:
+  values.yaml: |
+    authentik:
+      error_reporting:
+        enabled: true
+      email:
+        host: "smtp.gmail.com"
+        port: 587
+        use_tls: true
+        timeout: 30
+
+    server:
+      ingress:
+        ingressClassName: traefik
+        enabled: true
+        hosts:
+          - authentik.russellhost.org
+
+    postgresql:
+      enabled: true
+      primary:
+        persistence:
+          existingClaim: "authentik-postgres"
+    redis:
+      enabled: true
+      master:
+        persistence:
+          existingClaim: "authentik-redis"

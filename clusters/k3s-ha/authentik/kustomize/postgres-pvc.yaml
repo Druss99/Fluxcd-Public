@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: "authentik"
+  name: "authentik-postgres"
+spec:
+  storageClassName: "longhorn"
+  volumeName: "authentik-postgres"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "8Gi"
