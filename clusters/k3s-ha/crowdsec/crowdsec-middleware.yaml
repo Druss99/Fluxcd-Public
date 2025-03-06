@@ -12,3 +12,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  healthChecks:
+    - apiVersion: traefik.io/v1alpha1
+      kind: Middleware
+      name: bouncer
+      namespace: traefik
