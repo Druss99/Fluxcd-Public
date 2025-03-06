@@ -2,6 +2,5 @@ resources:
   - namespace.yaml
   - crowdsec-configmap.yaml
   - crowdsec-sealed-secret.yaml
-  - middleware.yaml
   - release.yaml
   - repository.yaml
