@@ -53,6 +53,10 @@ spec:
           moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
           version: v1.4.1
 
+    logs:
+      access:
+        enabled: true
+
     ports:
       web:
         redirections:
