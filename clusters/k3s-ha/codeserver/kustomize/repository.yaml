@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: codeserver
-  namespace: flux-system
+  namespace: codeserver
 spec:
   interval: 10m
   url: https://github.com/coder/code-server
